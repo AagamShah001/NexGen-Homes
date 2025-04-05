@@ -1,0 +1,52 @@
+.menubar-cont{
+    position: relative;
+}
+
+.menubar-bt{
+    height: 35px;
+    width: 35px;
+    margin: 0;
+    padding: 0;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    background-color: white;
+}
+
+.menubar-menu {
+    display: none;
+}
+
+.menu-list-item{
+    display: flex;
+    padding: 10px;
+}
+
+.menubar-cont:focus-within .menubar-menu {
+    width: 130px;
+    position: absolute;
+    right: 0;
+    top: 55px;
+    list-style: none;
+    border: 1px solid;
+    border-radius: 10px;
+    background-color: antiquewhite;
+    overflow: hidden;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    flex-direction: column; 
+}
+
+.menubar-cont:focus-within .menubar-menu.close {
+    display: none;
+}
+
+.menu-list-item:hover{
+    background-color: aliceblue; 
+}
+
+.menu-item-link{
+    color: #333;
+    text-decoration: none;
+}

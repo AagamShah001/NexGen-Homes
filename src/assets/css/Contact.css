@@ -1,0 +1,36 @@
+.contact-cont{
+  margin-bottom: 50px;
+}
+.contact-card{
+  display: grid;
+  row-gap: 30px;
+  padding: 50px;
+}
+.contact-back-link span{
+  color: #00A699;
+  margin-left: 5px;
+}
+
+.contact-back-link link{
+  cursor: pointer;
+}
+
+.contact-content{
+  color: #00A699;
+}
+
+.contact-login,.contact-sign{
+  cursor: pointer;
+  border: 5px solid;
+  border-radius: 10px;
+  padding: 20px;
+  margin-right: 30px;
+  color: #00A699;
+  background-color: white;
+  text-decoration: none;
+}
+
+.contact-login:hover,.contact-sign:hover{
+  background-color: #00A699;
+  color: white;
+}

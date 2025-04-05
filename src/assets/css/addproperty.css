@@ -1,0 +1,84 @@
+.Addproperty-form{
+    width: auto;
+    height: 400px;
+    display: grid;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px 5px lightgray;
+}
+
+.Addproperty-section{
+    display: flex;
+    justify-content: space-between;
+}
+
+.Addproperty-menu{
+    position: relative;
+    flex: 1;
+    width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+    border-radius: 10px;
+    border: 1px solid;
+    cursor: pointer;
+    background-color: white;
+}
+
+.Addproperty-dropdown{
+    flex: 1;
+    position: absolute;
+    width: 100%;
+    top: 50px;
+    left: 0;
+    top: 70px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-radius: 10px;
+    border: 1px solid;
+    cursor: pointer;
+    overflow: hidden;
+    background-color: antiquewhite;
+}
+
+.dclose{
+    display: none;
+}
+
+.Addproperty-menu-item{
+    padding: 10px;
+    border: 1px solid;
+
+}
+
+.Addproperty-menu-item:hover{
+    background-color: aliceblue;
+}
+
+.Addproperty-text{
+    flex: 1;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.Addproperty-description{
+    flex: 3;
+    border-radius: 10px;
+}
+
+.Addproperty-file{
+    flex: 1;
+    border-radius: 10px;
+    background-color: white;
+    cursor: pointer;
+}
+
+.Addproperty-file:hover{
+    background-color: rgb(233, 230, 230);
+}
+
+#Addproperty-images{
+    opacity: 1;
+    cursor: pointer;   
+}

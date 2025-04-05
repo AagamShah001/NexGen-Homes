@@ -1,0 +1,41 @@
+.review-cont{
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: 400px;
+    border: 1px solid;
+}
+
+.review-header{
+    flex: 1;
+    display: flex;
+    border: 1px solid;
+}
+
+.review-userimg{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+}
+
+.review-userimg img{
+    height: 65px;
+    width: 65px;
+    border-radius: 100px;
+}
+
+.review-username{
+    flex: 1;
+    border: 1px solid;
+}
+
+.review-footer{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.review-text{
+    border: 1px solid;
+}

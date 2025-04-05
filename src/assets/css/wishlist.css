@@ -1,0 +1,39 @@
+.Wishlist-cont{
+    width: auto;
+    min-height: 210px;
+    display: grid;
+    grid-template-rows: 1fr 4fr;
+    margin-bottom: 20px;
+}
+.Wishlist-title{
+    font-size: 30px;
+    padding: 10px;
+}
+
+.Wishlist-card-grid{
+    width: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    row-gap: 30px;
+    padding: 30px;
+    flex-wrap: wrap;
+
+}
+
+.Wishlist-card{
+    height: 318px;
+    width: 279.75px;
+    display: grid;
+    grid-template-rows: 5fr 1fr;
+}
+
+.Wishlist-card-img{
+    border: 1px solid;
+    border-radius: 10px;
+}
+
+.Wishlist-card-title{
+    font-size: 22px;
+    font-weight: 600;
+    border: 1px solid;
+}
