@@ -9,8 +9,8 @@
     padding: 0;
     border: none;
     border-radius: 50px;
-    cursor: pointer;
     background-color: white;
+    cursor: pointer;
 }
 
 .menubar-menu {
@@ -19,22 +19,23 @@
 
 .menu-list-item{
     display: flex;
-    padding: 10px;
+    padding: 5px;
 }
 
 .menubar-cont:focus-within .menubar-menu {
-    width: 130px;
+    width: 150px;
     position: absolute;
     right: 0;
     top: 55px;
     list-style: none;
-    border: 1px solid;
+    border: none;
+    box-shadow: 1px 1px 1px 1px;
     border-radius: 10px;
-    background-color: antiquewhite;
+    background-color: white;
     overflow: hidden;
     display: flex;
     margin: 0;
-    padding: 0;
+    padding: 10px;
     flex-direction: column; 
 }
 
@@ -43,10 +44,15 @@
 }
 
 .menu-list-item:hover{
-    background-color: aliceblue; 
+    border-radius: 10px;
+    background-color: rgb(238, 238, 238);
+    cursor: pointer; 
 }
 
 .menu-item-link{
+    flex: 1;
+    height: 50px;
     color: #333;
+    align-content: center;
     text-decoration: none;
 }

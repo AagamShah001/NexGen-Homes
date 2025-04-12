@@ -6,7 +6,7 @@
   height: 100px;
   background-color: white;
   box-shadow: 0px 1px 5px lightgray;
-  z-index: 1;
+  z-index: 10;
 }
 
 .nav-section{
@@ -18,10 +18,16 @@
 .nav-logo{
   height: 50px;
   width: auto;
-  padding-left: 10px;
+  display: flex;
+  flex-direction: row;
+  padding-left: 50px;
   align-content: center;
   font-size: 25px;
   font-weight: 600;
+}
+
+.nav-link-text{
+  color: #911EE3;
 }
 
 .nav-search{
@@ -30,8 +36,8 @@
   align-content: center;
   padding: 3px;
   border: 1px solid lightgray;
-  border-radius: 20px;
-  box-shadow: 1px 1px 5px lightgray;
+  border-radius: 10px;
+  box-shadow: 0px 0px 1px 1px rgb(241, 241, 241);
 }
 
 .nav-search-location{
@@ -43,6 +49,7 @@
 
 
 .nav-search-locality-cont{
+  display: flex;
   position: relative;
   border-radius: 30px;
 }
@@ -57,26 +64,6 @@
   border-radius: 30px;
 }
 
-.nav-search-bt{
-  position: absolute;
-  right: 0;
-  top: 12%;
-  width: 40px;
-  height: 40px;
-  margin-right: 9px;
-  padding: 10px;
-  border: none;
-  border-radius: 30px;
-  background-color: rgb(123, 219, 211);
-  cursor: pointer;
-}
-
-.nav-search-bt:hover,.search-icon{
-  background-color: white;
-  border: 2px solid;
-  border-color: rgb(0, 166, 153,0.5);
-}
-
 .nav-navigation{
   display: flex;
   height: 50px;
@@ -89,6 +76,12 @@
   text-align: end;
   font-size: 20px;
   color: #333;
+}
+
+#nav-link,.nav-item-link {
+  text-decoration: none;
+  color: #333;
+  cursor: pointer;
 }
 
 .nav-navigation-lng{

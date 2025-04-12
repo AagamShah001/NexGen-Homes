@@ -1,35 +1,22 @@
-import React, { useEffect, useState } from 'react'
 import "../../assets/css/dashboard.css";
-import { IoPeople } from "react-icons/io5";
-import { Link } from 'react-router-dom';
-import axios from 'axios';
-import { FaHeadset } from "react-icons/fa6";
+import GroupsIcon from '@mui/icons-material/Groups';
+import SupportAgentIcon from '@mui/icons-material/SupportAgent';
+import { Button, Card, CardActions, CardContent, Typography } from '@mui/material';
+import { ViewProperty } from './ViewProperty';
+import { AddProperty } from "./AddProperty";
+import { ClickProperty } from "./ClickProperty";
+import { useState } from "react";
 
 
 
 export const Dashboard = () => {
 
-    const [Imgs, setImgs] = useState([]);
-    const id = localStorage.getItem("id")
-    useEffect(() => {
-        getAllImgs();
-    }, []);
+    const [activeSection, setActiveSection] = useState("view");
 
-    const getAllImgs = async () => {
-        try {
-            const res = await axios.get("/img/imgbyuserid/" + id);
-            setImgs(res.data.data);
-
-        } catch (error) {
-            console.error("Error fetching properties:", error);
-        }
-    };
 
     return (
         <div className='dashboard-cont'>
             <div className='dashboard-head'>
-                <div className='dashboard-head-username'></div>
-                <div className='dashboard-head-addproperty-link'><Link id="property-link" to="/addproperty">Add Property</Link></div>
             </div>
 
             <div className='dashboard-body'>
@@ -37,52 +24,26 @@ export const Dashboard = () => {
                     <div className='dbody-card-title'>Your Property</div>
                     <div className='dbody-card-nav-cont'>
                         <div className='dbody-card-nav'>
-                            <button className='dbody-card-nav-bt'>View Property</button>
-                            <button className='dbody-card-nav-bt'>View reviews</button>
-                            <button className='dbody-card-nav-bt'>Edit Property</button>
+                            <button className='dbody-card-nav-bt' onClick={() => setActiveSection("add")}>Add Property</button>
+                            <button className='dbody-card-nav-bt' onClick={() => setActiveSection("view")}>View Property</button>
+                            <button className='dbody-card-nav-bt' onClick={() => setActiveSection("edit")}>Edit Property</button>
+                            <button className='dbody-card-nav-bt' onClick={() => setActiveSection("reviews")}>Reviews</button>
                         </div>
+
                     </div>
+
                     <div className='dbody-card-view'>
                         <div className='dbody-card-overview'>
-                            {Imgs?.map((img) => {
-                                return (
-                                    <div key={img._id} className='overview-cont'>
-                                        <div className='overview-cont-section'>
-                                            <div className='overview-left'>
-                                                <img alt="property" src={"http://localhost:3000/" + img.imgUrl[0]} />
-                                            </div>
-                                            <div className='overview-right'>
-                                                <div className='dproperty-name'>
-                                                    {img.propertyId.name},
-                                                    {img.propertyId.areaId.name},               
-                                                    {img.propertyId.cityId.name},
-                                                    {img.propertyId.stateId.name}
-                                                </div>
-                                                <ol className='dproperty-details'>
-
-                                                    <li className='dproperty-item'>Address: {img.propertyId.address}</li>
-                                                    <li className='dproperty-item'>Pincode: {img.propertyId.pincode}</li>
-                                                    <li className='dproperty-item'>Price: {img.propertyId.basePrice}</li>
-                                                    <li className='dproperty-item'>Size(Sq Ft): {img.propertyId.size}</li>
-                                                    <li className='dproperty-item'>Bedrooms: {img.propertyId.bedrooms}</li>
-                                                    <li className='dproperty-item'>Bathrooms: {img.propertyId.bathrooms}</li>
-                                                    <li className='dproperty-item'>FurnishingStatus: {img.propertyId.furnishingStatus}</li>
-                                                    <li className='dproperty-item'>Amenities: {img.propertyId.Amenities}</li>
-                                                    <li className='dproperty-item'>Built in: {img.propertyId.yearBuilt}</li>
-
-                                                </ol>
-                                            </div>
-                                        </div>
-                                        <div className='overview-cont-section'>
-                                            <div className='dproperty-description'>{img.propertyId.description}</div>
-                                        </div>
-                                    </div>)
-
-                            })}
+                            {activeSection === "add" && <AddProperty />}
+                            {activeSection === "view" && <ViewProperty />}
+                            {activeSection === "edit" && <ClickProperty />}
+                            {activeSection === "reviews" && (
+                                <Typography variant="body1">Reviews section coming soon.</Typography>
+                            )}
 
                         </div>
-
                     </div>
+
                 </div>
             </div>
 
@@ -90,16 +51,21 @@ export const Dashboard = () => {
                 <div className='dashboard-footer-help'>
                     <div className='footer-help-title'>We’re here to help</div>
                     <div className='footer-help-card'>
+
                         <div className='fhelp-card'>
-                            <div className='fhelp-card-icon'><IoPeople size={30} /></div>
-                            <div className='fhelp-card-paragraph'><span>Join your local Host Club</span>
+                            <div className='fhelp-card-icon'><GroupsIcon size={30} /></div>
+                            <div className='fhelp-card-paragraph'>
+
+                                <span>Join your local Host Club</span>
                                 <p>Connect, collaborate and share
                                     with other hosts and community
                                     members.</p>
+
                             </div>
                         </div>
+
                         <div className='fhelp-card'>
-                            <div className='fhelp-card-icon'><FaHeadset size={30}/></div>
+                            <div className='fhelp-card-icon'><SupportAgentIcon size={30} /></div>
                             <div className='fhelp-card-paragraph'><span>Contact specialised support</span>
                                 <p>As a new Owner, you get one-tap access to a specially trained support team.                                </p>
                             </div>
@@ -107,20 +73,59 @@ export const Dashboard = () => {
                     </div>
                 </div>
                 <div className='dashboard-footer-blog'>
-                    <div className='footer-blog-title'>title</div>
+                    <div className='footer-blog-title'>Resources and tips</div>
                     <div className='footer-blog-card'>
-                        <div className='fblog-card'>
-                            <div className='fblog-card-img'><img src="../src\assets\img\blog-house.webp"/></div>
-                            <div className='fblog-card-title'>Write a house manual to share info about your space</div>
-                        </div>
-                        <div className='fblog-card'>
-                            <div className='fblog-card-img'><img src="../src\assets\img\help u.webp"/></div>
-                            <div className='fblog-card-title'>Help your listing stand out</div>
-                        </div>
-                        <div className='fblog-card'>
-                            <div className='fblog-card-img'><img src="../src\assets\img\review price.webp"/></div>
-                            <div className='fblog-card-title'>Review your price</div>
-                        </div>
+
+                        <Card sx={{ p: 2, height: 300, width: 345 }}>
+                            <img
+                                style={{ width: 345 }}
+                                src="src\assets\img\blog-house.webp"
+                            />
+                            <CardContent>
+                                <Typography gutterBottom variant="h6" component="div">
+                                    Help your listing stand out
+                                </Typography>
+
+                            </CardContent>
+                            <CardActions>
+                                <Button size="small">Share</Button>
+                                <Button size="small">Learn More</Button>
+                            </CardActions>
+                        </Card>
+
+                        <Card sx={{ p: 2, height: 300, width: 345 }}>
+                            <img
+                                style={{ width: 345 }}
+                                src="src\assets\img\help.webp"
+                            />
+                            <CardContent>
+                                <Typography gutterBottom variant="h6" component="div">
+                                    Review your price
+                                </Typography>
+
+                            </CardContent>
+                            <CardActions>
+                                <Button size="small">Share</Button>
+                                <Button size="small">Learn More</Button>
+                            </CardActions>
+                        </Card>
+
+                        <Card sx={{ p: 2, height: 300, width: 345 }}>
+                            <img
+                                style={{ width: '100%', height: 'auto' }}
+                                src="src\assets\img\price.webp"
+                            />
+                            <CardContent>
+                                <Typography gutterBottom variant="h6" component="div">
+                                    Writing an effective listing description
+                                </Typography>
+
+                            </CardContent>
+                            <CardActions>
+                                <Button size="small">Share</Button>
+                                <Button size="small">Learn More</Button>
+                            </CardActions>
+                        </Card>
 
                     </div>
                 </div>

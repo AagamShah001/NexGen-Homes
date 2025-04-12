@@ -1,6 +1,6 @@
 import "../../assets/css/contact.css";
 import { Link } from "react-router-dom";
-import { FaArrowLeft } from "react-icons/fa";
+import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 
 
 
@@ -11,7 +11,7 @@ export const Contact = () => {
     <div className="contact-cont">
       <div className="contact-card">
         <div className="contact-back-link">
-          <Link to=""><FaArrowLeft color="black" size={10}/><span>Back to Help Center</span></Link>
+          <Link to="/helpcenter"><KeyboardBackspaceIcon sx={{ fontSize: 15, color: '#333' }}/><span>Back to Help Center</span></Link>
         </div>
         <div className="contact-content">
           <h1>Log in to contact us</h1>

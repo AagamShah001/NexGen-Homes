@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import "../../assets/css/menubar.css";
-import { FaUserCircle } from "react-icons/fa";
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { Link } from 'react-router-dom';
 
 export const Menubar = ({role}) => {
@@ -9,6 +9,10 @@ export const Menubar = ({role}) => {
     const [Owner, setOwner] = useState(false);
     const [Bydefault, setBydefault] = useState(true);
     const [Menu, setMenu] = useState("close");
+
+    const handleLogout = () => {
+      localStorage.clear(); 
+    };
 
     
 
@@ -34,7 +38,7 @@ export const Menubar = ({role}) => {
     return (
         <div className='menubar-cont' onBlur={handleBlur}>
             <button onClick={togglePopover} className="menubar-bt">
-                <FaUserCircle size={35} />
+                <AccountCircleIcon sx={{ fontSize: 40 }} />
             </button>
             
 
@@ -43,24 +47,24 @@ export const Menubar = ({role}) => {
                     <li className="menu-list-item"><Link className="menu-item-link" to="/signup">Sign up</Link></li>
                     <li className="menu-list-item"><Link className="menu-item-link" to="/login">Login</Link></li>
                     <li className="menu-list-item"><Link className="menu-item-link" to="/home">Home</Link></li>
-                    <li className="menu-list-item"><Link className="menu-item-link" to="/contact">Contact us</Link></li>
+                    <li className="menu-list-item"><Link className="menu-item-link" to="/helpcenter">Help Center</Link></li>
                 </ol>
                         )}
                 
                 {Owner &&(
                 <ol className={`menubar-menu ${Menu}`}>
-                        <li className="menu-list-item"><Link className="menu-item-link" to="/login">Dashboard</Link></li>
-                        <li className="menu-list-item"><Link className="menu-item-link" to="/signup">Messages</Link></li>
-                        <li className="menu-list-item"><Link className="menu-item-link" to="/home">Profile</Link></li>
-                        <li className="menu-list-item"><Link className="menu-item-link" to="/contact">Logout</Link></li>
+                        <li className="menu-list-item"><Link className="menu-item-link" to="/dashboard">Dashboard</Link></li>
+                        <li className="menu-list-item"><Link className="menu-item-link" to="/profile">Profile</Link></li>
+                        <li className="menu-list-item"><Link className="menu-item-link" to="/wishlist">Wishlist</Link></li>
+                        <li className="menu-list-item"><a onClick={handleLogout} className="menu-item-link" href="/">Logout</a></li>
                     </ol>
                 )}
                 {User &&(
                     <ol className={`menubar-menu ${Menu}`}>
-                        <li className="menu-list-item"><Link className="menu-item-link" to="/login">Wishlist</Link></li>
-                        <li className="menu-list-item"><Link className="menu-item-link" to="/signup">Messages</Link></li>
-                        <li className="menu-list-item"><Link className="menu-item-link" to="/home">Profile</Link></li>
-                        <li className="menu-list-item"><Link className="menu-item-link" to="/contact">Logout</Link></li>
+                        <li className="menu-list-item"><Link className="menu-item-link" to="/Home">Home</Link></li>
+                        <li className="menu-list-item"><Link className="menu-item-link" to="/wishlist">Wishlist</Link></li>
+                        <li className="menu-list-item"><Link className="menu-item-link" to="/profile">Profile</Link></li>
+                        <li className="menu-list-item"><a onClick={handleLogout} className="menu-item-link" href="/">Logout</a></li>
                     </ol>
                 )}
             

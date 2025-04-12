@@ -24,6 +24,11 @@
     overflow: hidden;
 }
 
+#home-link{
+    color: #333;
+    text-decoration: none;
+}
+
 .home-card-head{
     position: relative;
    border-radius: 15px;

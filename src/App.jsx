@@ -7,20 +7,15 @@ import { Signin } from './components/common/Signin'
 import { Forgot } from './components/common/Forgot'
 import { Signup } from './components/common/Signup'
 import { Footer } from './components/layout/Footer'
-import {Contact} from './components/common/Contact'
+import { Contact } from './components/common/Contact'
 import { HomeDetails } from './components/common/HomeDetails'
-import { Messages } from './components/utils/Messages'
-import { Notifications } from './components/utils/Notifications'
 import { Dashboard } from './components/owner/Dashboard'
 import { AdminDashboard } from './components/admin/AdminDashboard'
 import { Profile } from './components/common/Profile'
 import { Wishlist } from './components/user/Wishlist'
-import { AddProperty } from './components/owner/AddProperty'
 import { AdminLogin } from './components/admin/adminlogin'
-import { PrivateRoute } from './components/authentication/PrivateRoute'
-import { Menubar } from './components/layout/menubar'
-import { Demo } from './components/Test/Demo'
-import { Review } from './components/user/Review'
+import { HelpCenter } from './components/common/Support/HelpCenter'
+import { Loading } from './components/layout/Loading'
 
 
 
@@ -37,42 +32,36 @@ function App() {
   return (
     <>
       {!isAdminRoute && <Navbar />}
-      <Routes> 
+      <Routes>
 
-            
-              <Route path="/home" element={<Home/>}></Route>
-              <Route index element={<Home/>}></Route>
-              <Route path="/contact" element={<Contact/>}></Route>
-              <Route path="/HomeDetails/:id" element={<HomeDetails/>}></Route>  
 
-              <Route path="/login" element={<Signin/>}></Route>
-              <Route path="/reset" element={<Forgot/>}></Route>
-              <Route path="/signup" element={<Signup/>}></Route>
-              <Route path="/*" element={<Error/>}></Route>
+        <Route path="/home" element={<Home />}></Route>
+        <Route index element={<Home />}></Route>
+        <Route path="/contact" element={<Contact />}></Route>
+        <Route path="/HomeDetails/:id" element={<HomeDetails />}></Route>
 
-              <Route path="/admin" element={<AdminLogin/>}></Route>
-              <Route path="/message" element={<Messages/>}></Route>
-              <Route path="/profile" element={<Profile/>}></Route>
-              <Route path="/review" element={<Review/>}></Route>
+        <Route path="/login" element={<Signin />}></Route>
+        <Route path="/reset" element={<Forgot />}></Route>
+        <Route path="/signup" element={<Signup />}></Route>
+        <Route path="/*" element={<Error />}></Route>
 
-          <Route  element={<PrivateRoute allowedRoles={["Admin"]} />}>
-          
-          <Route path="/adminpanel" element={<AdminDashboard/>}></Route>
+        <Route path="/helpcenter" element={<HelpCenter />}></Route>
+        <Route path="/admin" element={<AdminLogin />}></Route>
 
-          </Route>     
+        <Route element={<Loading  allowedRoles={["Admin"]} />}>
+          <Route path="/adminpanel" element={<AdminDashboard />}></Route>
+        </Route>
 
-          {/* <Route  element={<PrivateRoute allowedRoles={["Owner"]} />}> */}
+        <Route element={<Loading  allowedRoles={["Owner"]} />}>
+          <Route path="/dashboard" element={<Dashboard />}></Route>
+          <Route path="/profile" element={<Profile />}></Route>
+          <Route path="/wishlist" element={<Wishlist />}></Route>
+        </Route>
 
-                <Route path="/dashboard" element={<Dashboard/>}></Route>
-                <Route path="/addproperty" element={<AddProperty/>}></Route> 
-
-          {/* </Route> */}
-
-          {/* <Route  element={<PrivateRoute allowedRoles={["User"]} />}> */}
-
-              <Route path="/wishlist" element={<Wishlist/>}></Route>
-              
-          {/* </Route> */}
+        <Route element={<Loading  allowedRoles={["User"]} />}>
+          <Route path="/profile" element={<Profile />}></Route>
+          <Route path="/wishlist" element={<Wishlist />}></Route>
+        </Route>
 
       </Routes>
 

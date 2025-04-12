@@ -1,8 +1,9 @@
 import React from 'react';
 import "../../assets/css/footer.css";
-import { TiSocialFacebookCircular  } from "react-icons/ti";
-import { FaInstagramSquare,FaRegCopyright   } from "react-icons/fa";
-import { SlSocialTwitter  } from "react-icons/sl";
+import InstagramIcon from '@mui/icons-material/Instagram';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import CopyrightIcon from '@mui/icons-material/Copyright';
 
 
 
@@ -12,19 +13,15 @@ export const Footer = () => {
             <div className='footer-first-section'>
                 <div className='footer-content'>
                     <span className='footer-text'>About us</span>
-                    <span className='footer-text'>At NexGen Homes, we are dedicated to helping you find 
+                    <span className='footer-text'>
+                        At NexGen Homes, we are dedicated to helping you find 
                         the perfect property whether it's your dream home, a vacation retreat, or an 
                         investment opportunity. Our platform offers a wide range of real estate options, 
                         from residential homes to commercial spaces, ensuring that you can find exactly 
-                        what you need.</span>
+                        what you need.
+                    </span>
                 </div>
-                <div className='footer-content'>
-                    <span className='footer-text'>quick links</span>
-                    <a className='footer-text' href="#">Home</a>
-                    <a className='footer-text' href="#">About us</a>
-                    <a className='footer-text' href="#">Contact</a>
-                    <a className='footer-text' href="#">Help</a>
-                </div>
+
                 <div className='footer-content'>
                     <span className='footer-text'>  NexGen Homes</span>
                     <span className='footer-text'>  Newsroom</span>
@@ -45,14 +42,14 @@ export const Footer = () => {
             <div className='footer-second-section'>
                 <div className='footer-content'></div>
                 <div className='footer-content'>
-                    <span className="footer-text"><FaRegCopyright /> 2025 NexGen Homes | All rights reserved.</span>
+                    <span className="footer-text"><CopyrightIcon sx={{ fontSize: 15 }} />2025 NexGen Homes | All rights reserved.</span>
                 </div>
                 <div className='footer-content'>
                     <span className="footer-text">social icons</span>
                     <span className='social-icons'>
-                        <TiSocialFacebookCircular size={20}/>
-                        <SlSocialTwitter />
-                        <FaInstagramSquare />
+                        <FacebookIcon/>
+                        <TwitterIcon />
+                        <InstagramIcon />
                     </span>
                 </div>
             </div>

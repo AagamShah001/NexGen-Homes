@@ -1,39 +1,123 @@
-import React from 'react'
-import "../../assets/css/profile.css";
-import { FaCamera } from "react-icons/fa";
-
+import React, { useRef, useState } from 'react';
+import {
+  Box,
+  Grid,
+  Avatar,
+  Typography,
+  TextField,
+  Button,
+  IconButton,
+} from '@mui/material';
+import CameraAltIcon from '@mui/icons-material/CameraAlt';
 
 export const Profile = () => {
+  const fileInputRef = useRef(null);
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  const handleImageClick = () => {
+    fileInputRef.current.click();
+  };
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const imageUrl = URL.createObjectURL(file);
+      setSelectedImage(imageUrl);
+    }
+  };
+
   return (
-    <div className='Profile-cont'>
+    <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, p: 4, gap: 4 }}>
+      
+      {/* Left: Profile Picture Section */}
+      <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', minWidth: 250 }}>
+        <Box sx={{ position: 'relative', width: 150, height: 150 }}>
+          <Avatar
+            alt="Profile"
+            src={selectedImage || '#'}
+            sx={{ width: 150, height: 150, fontSize: 48 }}
+          >
+            M
+          </Avatar>
 
-        <div className='Profile-section-left'>
-            <div className='Profile-section-left-fixed'>
-            <div className='Profile-pic-cont'>
-                <div className='Profile-pic'>
-                    <img src="#" alt="M"/>
-                    <button className='Profile-pic-Add-bt'><FaCamera id="camera-icon"/>Add</button>
-                </div>
-            </div>
-            </div>
-        </div>
+          {/* Camera Icon triggers file input */}
+          <IconButton
+            color="primary"
+            onClick={handleImageClick}
+            sx={{
+              position: 'absolute',
+              bottom: 0,
+              right: 0,
+              backgroundColor: 'white',
+              boxShadow: 2,
+              '&:hover': {
+                backgroundColor: '#f0f0f0',
+              },
+            }}
+          >
+            <CameraAltIcon />
+          </IconButton>
 
-        <div className='Profile-section-right'>
-            <div className='Profile-Title'>Your Profile</div>
-            <div className='Profile-Details'>
-                <div className='Profile-half-textbox'>   <input type='text' placeholder='First Name'/>    </div>
-                <div className='Profile-half-textbox'>   <input type='text' placeholder='Last Name'/>     </div>
-                <div className='Profile-full-textbox'>   <input type='text' placeholder='Email'/>         </div>
-                <div className='Profile-half-textbox'>   <input type='text' placeholder='Phone Number'/>  </div>
-                <div className='Profile-half-textbox'>   <input type='text' placeholder='Pincode'/>       </div>
-                <div className='Profile-half-textbox'>   <input type='text' placeholder='Gender'/>        </div>
-                <div className='Profile-half-textbox'>   <input type='date' placeholder='Date of Birth'/> </div>
-                <div className='Profile-half-textbox'>   <input type='text' placeholder='State'/>         </div>
-                <div className='Profile-half-textbox'>   <input type='text' placeholder='City'/>          </div>
-                <div className='Profile-full-textbox'>   <input type='text' placeholder='Address'/>       </div>
-            </div>
-            <div className='Profile-submit'><button className='Profile-submit-bt'>Done</button></div>
-        </div>
-    </div>
-  )
-}
+          {/* Hidden file input */}
+          <input
+            type="file"
+            accept="image/*"
+            ref={fileInputRef}
+            onChange={handleImageChange}
+            style={{ display: 'none' }}
+          />
+        </Box>
+      </Box>
+
+      {/* Right: Form Section */}
+      <Box sx={{ flex: 1 }}>
+        <Typography variant="h5" fontWeight="bold" gutterBottom>
+          Your Profile
+        </Typography>
+
+        <Grid container spacing={2}>
+          <Grid item xs={12} md={6}>
+            <TextField fullWidth label="First Name" variant="outlined" />
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <TextField fullWidth label="Last Name" variant="outlined" />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField fullWidth label="Email" type="email" variant="outlined" />
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <TextField fullWidth label="Phone Number" type="tel" variant="outlined" />
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <TextField fullWidth label="Pincode" variant="outlined" />
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <TextField fullWidth label="Gender" variant="outlined" />
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <TextField
+              fullWidth
+              type="date"
+              label="Date of Birth"
+              InputLabelProps={{ shrink: true }}
+              variant="outlined"
+            />
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <TextField fullWidth label="State" variant="outlined" />
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <TextField fullWidth label="City" variant="outlined" />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField fullWidth label="Address" variant="outlined" />
+          </Grid>
+        </Grid>
+
+        <Box sx={{ mt: 3 }}>
+          <Button variant="contained" color="primary">Done</Button>
+        </Box>
+      </Box>
+    </Box>
+  );
+};

@@ -1,21 +1,43 @@
-import React from 'react'
-import "../../assets/css/review.css";
+import React from 'react';
+import { Box, Typography, Avatar, Rating } from '@mui/material';
 
 export const Review = () => {
   return (
-    <div className='review-cont'>
+    <Box
+      sx={{
+        border: '1px solid #ddd',
+        borderRadius: 2,
+        p: 2,
+        mb: 2,
+        maxWidth: 500,
+        boxShadow: 2,
+        bgcolor: '#fff',
+      }}
+    >
+      {/* Header */}
+      <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
+        <Avatar
+          src="/src/assets/img/help u.webp"
+          alt="user img"
+          sx={{ width: 48, height: 48, mr: 2 }}
+        />
+        <Typography variant="subtitle1" fontWeight={600}>
+          Username
+        </Typography>
+      </Box>
 
-        <div className='review-header'>
-            <div className='review-userimg'>
-                <img src="src\assets\img\help u.webp" alt="user img"/>
-            </div>
-            <div className='review-username'>Username</div>
-        </div>
-        <div className='review-footer'>
-        <div className='review-text'>*(4.5)</div> 
-        <div className='review-text'>Genevieve has an amazing home that was very welcoming. Really great little place to stay. The house gets a lot of natural light, which I think is rare in London.</div> 
-        </div>
-
-    </div>
-  )
-}
+      {/* Footer */}
+      <Box>
+        <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
+          <Rating value={4.5} precision={0.5} readOnly size="small" />
+          <Typography variant="body2" sx={{ ml: 1 }}>
+            (4.5)
+          </Typography>
+        </Box>
+        <Typography variant="body2" color="text.secondary">
+          Genevieve has an amazing home that was very welcoming. Really great little place to stay. The house gets a lot of natural light, which I think is rare in London.
+        </Typography>
+      </Box>
+    </Box>
+  );
+};

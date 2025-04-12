@@ -68,6 +68,7 @@
     border: none;
     padding: 15px;
     border-radius: 25px;
+    cursor: pointer;
 }
 
 .dbody-card-view{
@@ -77,17 +78,15 @@
 }
 
 .dbody-card-overview{
-    height: 240px;
+    height: auto;
     display: grid;
     grid-template-columns: 1fr;
     row-gap: 40px;
-    border: 1px solid;
+    border: none;
     overflow: auto;
     overscroll-behavior: contain;
-    border-top-right-radius: 0px;
-    border-bottom-right-radius: 0px;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
+    border-radius: 10px;
+    background-color: rgba(245, 244, 244, 0.493);
     padding: 30px 30px 30px;
 }
 
@@ -101,6 +100,7 @@
     border-radius: 10px;
     border: 1px solid;
     overflow: hidden;
+    background-color: white;
 }
 
 .overview-cont-section{
@@ -214,6 +214,7 @@
     flex: 1;
     display: flex;
     flex-direction: row;
+    justify-content: center;
     padding: 30px;
     column-gap: 30px;
     cursor: pointer;

@@ -7,6 +7,11 @@
   padding: 20px 30px;
 }
 
+.Details-cont img:hover{
+  opacity: 0.9;
+    cursor: pointer;
+}
+
 .Details-head{
   display: flex;
   flex-direction: column;
@@ -33,7 +38,6 @@
   overflow: hidden;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
-  border: 1px solid;
 }
 
 .Details-img-leftsection img{
@@ -57,22 +61,18 @@
 }
 
 .Details-img-rightsection-imgcard{
-  border: 1px solid;
   overflow: hidden;
 }
 
 .Details-img-rightsection-imgcard2{
-  border: 1px solid;
   border-top-right-radius: 10px;
   overflow: hidden;
 }
 
 .Details-img-rightsection-imgcard4{
   position: relative;
-  border: 1px solid;
   border-bottom-right-radius: 10px;
   overflow: hidden;
-  
 }
 
 .Details-img-rightsection-link{
@@ -250,7 +250,6 @@
   background: white;
   border-radius: 12px;
   flex-wrap: wrap;
-  border: 1px solid;
 }
 
 .Details-reviews-card-head {
@@ -303,6 +302,8 @@
 
 .review-user-rate-date{
   display: flex;
+  column-gap: 5px;
+  align-items: center;
 }
 
 .review-user-description {
