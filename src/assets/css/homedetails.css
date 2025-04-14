@@ -95,7 +95,14 @@
 
 .Details-description-overview-title{
   font-size: 25px;
+  margin-bottom: 10px;
 }
+
+.Details-description-overview-price{
+  margin-top: 20px;
+  font-size: 25px;
+}
+
 
 /*Body*/
 .Details-body{

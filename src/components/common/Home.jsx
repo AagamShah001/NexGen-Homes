@@ -48,12 +48,12 @@ export const Home = () => {
                   <WishButton  imgId={Img._id} propertyId={Img.propertyId._id} />
                   </div>
                   <div className="home-card-head-content-img">
-                  <Link id="home-link" target="_blank" to={"/homedetails/" + Img._id}>
+                  <Link id="home-link" target="_blank" to={"/propertydetails/" + Img.propertyId._id}>
                     <img src={"http://localhost:3000/" + Img.imgUrl[0]} />
                     </Link>
                   </div>
                 </div>
-                <Link id="home-link"  target="_blank" to={"/homedetails/" + Img._id}>
+                <Link id="home-link"  target="_blank" to={"/propertydetails/" + Img.propertyId._id}>
                 <div className="home-card-body">
                   <div className="home-card-body-content-title">{Img.name}
                     <div className="home-card-body-content-rate">
@@ -66,7 +66,7 @@ export const Home = () => {
                   </div>
                   <div className="home-card-body-content-text">
                     {Img.propertyId.cityId.name},{Img.propertyId.stateId.name}
-                    <span>₹{Img.propertyId.basePrice}</span>
+                    <span>{Img.propertyId.basePrice?.toLocaleString('en-IN', { style: 'currency', currency: 'INR' })}</span>
                   </div>
                 </div>
                 </Link>

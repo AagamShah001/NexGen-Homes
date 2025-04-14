@@ -26,10 +26,12 @@ export const HomeDetails = () => {
     const getAllImgsbyId = async () => {
         try {
             const res = await axios.get("/img/img/" + id);
-            setImgs(res.data.data);
-            if (res.data.data.propertyId?._id) {
-                getAllReviews(res.data.data.propertyId?._id);
-                getAllRate(res.data.data.propertyId?._id);
+            const propertyData = res.data.data[0];
+            setImgs(propertyData);
+
+            if (propertyData.propertyId?._id) {
+                getAllReviews(propertyData.propertyId._id);
+                getAllRate(propertyData.propertyId._id);
             }
         } catch (error) {
             console.error("Error fetching properties:", error);
@@ -79,6 +81,9 @@ export const HomeDetails = () => {
                     </div>
                     <div className="Details-description-overview">
                         <div className="Details-description-overview-title">Location in {Imgs?.propertyId.cityId.name}, {Imgs?.propertyId.stateId.name}</div>
+                        <Divider />
+                        <div className="Details-description-overview-price"><span>Base Price: {Imgs?.propertyId.basePrice?.toLocaleString('en-IN', { style: 'currency', currency: 'INR' })}</span>
+                        </div>
                     </div>
                     <Divider />
                 </div>
@@ -212,8 +217,8 @@ export const HomeDetails = () => {
                             {Reviews && Reviews.length > 0 ? (
                                 <>
                                     <StarIcon />
-                                    {Rate?.averageRating} 
-                                    <CircleIcon sx={{ fontSize: 6,p:1 }} />
+                                    {(Rate?.averageRating) / 10}
+                                    <CircleIcon sx={{ fontSize: 6, p: 1 }} />
                                     {Rate?.totalReviews} Reviews
                                 </>
                             ) : (
