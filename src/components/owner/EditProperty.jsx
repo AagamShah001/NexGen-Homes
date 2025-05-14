@@ -9,7 +9,7 @@ export const EditProperty = ({ id }) => {
   const navigate = useNavigate();
   const [propertyData, setPropertyData] = useState(null);
   const [loading, setLoading] = useState(true);
-  
+
   useEffect(() => {
     fetchProperty();
   }, []);
@@ -62,32 +62,46 @@ export const EditProperty = ({ id }) => {
   }
 
   return (
-    <Box sx={{ p: 4 }}>
-      <Paper elevation={3} sx={{ p: 4 }}>
-        <Typography variant="h5" gutterBottom>Edit Property</Typography>
+    <Box sx={{ p: 2, maxWidth: '800px', mx: 'auto' }}>
+      <Paper elevation={3} sx={{ p: { xs: 2, sm: 4 } }}>
+        <Typography variant="h5" gutterBottom textAlign="center">
+          Edit Property
+        </Typography>
 
         <Grid container spacing={2}>
           {Object.entries(propertyData).map(([key, value]) => (
-            <Grid item xs={12} sm={6} key={key}>
+            <Grid  key={key}>
               <TextField
                 fullWidth
                 label={key.charAt(0).toUpperCase() + key.slice(1)}
                 name={key}
                 value={value}
                 onChange={handleChange}
+                multiline={key === 'description'}
+                minRows={key === 'description' ? 3 : 1}
+                maxRows={key === 'description' ? 6 : 1}
+                sx={key === 'description' ? { width: { xs: '100%', sm: '600px' } } : {}}
               />
             </Grid>
           ))}
         </Grid>
 
-        <Button
-          variant="contained"
-          color="primary"
-          sx={{ mt: 3 }}
-          onClick={handleUpdate}
+        <Box
+          sx={{
+            mt: 3,
+            display: 'flex',
+            justifyContent: { xs: 'center', sm: 'flex-end' }
+          }}
         >
-          Update Property
-        </Button>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={handleUpdate}
+            sx={{ width: { xs: '100%', sm: 'auto' } }}
+          >
+            Update Property
+          </Button>
+        </Box>
       </Paper>
     </Box>
   );

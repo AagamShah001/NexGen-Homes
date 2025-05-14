@@ -9,7 +9,7 @@ import {
   CardContent,
   CircularProgress
 } from '@mui/material';
-import { Link } from 'react-router-dom';
+
 
 export const Wishlist = () => {
   const userId = localStorage.getItem('id');
@@ -45,17 +45,18 @@ export const Wishlist = () => {
         <Typography variant="body1">No properties in your wishlist.</Typography>
       ) : (
         <Grid container spacing={3}>
-          {wishlist.map((item) => (
-            <Grid item xs={12} sm={6} md={4} key={item._id}>
+          {wishlist?.map((item) => (
+            <Grid key={item._id}>
               <Card
-              component={Link}
-              sx={{ textDecoration: 'none', color: 'inherit' }}
-              to={`/homedetails/${item.imgId?._id}`}>
+                component="a"
+                href={`/propertydetails/${item.imgId?.propertyId}`}
+                sx={{ textDecoration: 'none', color: 'inherit' }}
+              >
                 <CardMedia
                   component="img"
                   height="180"
-                  sx={{ borderRadius: 5 }}
-                  image={"http://localhost:3000/"+item.imgId.imgUrl?.[0] || '/placeholder.jpg'}
+                  sx={{ borderRadius: 5, width: 200 }}
+                  image={"http://localhost:3000/" + item.imgId.imgUrl?.[0] || '/placeholder.jpg'}
                   alt={item.propertyId?.name || 'Property Image'}
                 />
                 <CardContent>

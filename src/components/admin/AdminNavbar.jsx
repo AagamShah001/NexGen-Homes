@@ -44,7 +44,7 @@ export const AdminNavbar = ({ onMenuToggle }) => {
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
           {/* Notifications */}
           <IconButton size="large" color="inherit">
-            <Badge badgeContent={3} color="error">
+            <Badge badgeContent={0} color="error">
               <NotificationsIcon />
             </Badge>
           </IconButton>

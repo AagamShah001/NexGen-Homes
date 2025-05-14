@@ -56,6 +56,7 @@ export const Menubar = ({role}) => {
                         <li className="menu-list-item"><Link className="menu-item-link" to="/dashboard">Dashboard</Link></li>
                         <li className="menu-list-item"><Link className="menu-item-link" to="/profile">Profile</Link></li>
                         <li className="menu-list-item"><Link className="menu-item-link" to="/wishlist">Wishlist</Link></li>
+                        <li className="menu-list-item"><Link className="menu-item-link" to="/helpcenter">Help Center</Link></li>
                         <li className="menu-list-item"><a onClick={handleLogout} className="menu-item-link" href="/">Logout</a></li>
                     </ol>
                 )}
@@ -64,6 +65,7 @@ export const Menubar = ({role}) => {
                         <li className="menu-list-item"><Link className="menu-item-link" to="/Home">Home</Link></li>
                         <li className="menu-list-item"><Link className="menu-item-link" to="/wishlist">Wishlist</Link></li>
                         <li className="menu-list-item"><Link className="menu-item-link" to="/profile">Profile</Link></li>
+                        <li className="menu-list-item"><Link className="menu-item-link" to="/helpcenter">Help Center</Link></li>
                         <li className="menu-list-item"><a onClick={handleLogout} className="menu-item-link" href="/">Logout</a></li>
                     </ol>
                 )}

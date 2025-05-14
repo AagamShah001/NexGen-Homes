@@ -33,53 +33,56 @@ export const ViewProperty = () => {
     return (
         <Box sx={{ p: 2 }}>
             <Grid container spacing={2}>
-                {Imgs?.map((img) => (
-                    <Grid  key={img._id}>
-                        <Card sx={{ display: 'flex', boxShadow: 2 }}>
+                {Imgs && Imgs.length > 0 ? (
+                    Imgs.map((img) => (
+                        <Grid key={img._id}>
+                            <Card sx={{ display: 'flex', boxShadow: 2 }}>
+                                <Box sx={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
+                                    <CardContent>
+                                        <Typography variant="h6">
+                                            {img.propertyId.name}, {img.propertyId.areaId?.name}, {img.propertyId.cityId?.name}, {img.propertyId.stateId?.name}
+                                        </Typography>
 
-                            <Box sx={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
-                                <CardContent>
-                                    <Typography variant="h6">
-                                        {img.propertyId.name}, {img.propertyId.areaId?.name}, {img.propertyId.cityId?.name}, {img.propertyId.stateId?.name}
-                                    </Typography>
+                                        <Divider sx={{ my: 1 }} />
 
-                                    <Divider sx={{ my: 1 }} />
-
-                                    <Grid container spacing={1}>
-                                    <Grid  sx={{ display: 'flex', columnGap: 60 }}>
-                                        
-                                            <List dense>
-                                                <ListItem disableGutters>Address: {img.propertyId.address}</ListItem>
-                                                <ListItem disableGutters>Pincode: {img.propertyId.pincode}</ListItem>
-                                                <ListItem disableGutters>Price: ₹{img.propertyId.basePrice}</ListItem>
-                                                <ListItem disableGutters>Size: {img.propertyId.size} Sq Ft</ListItem>
-                                                <ListItem disableGutters>Bedrooms: {img.propertyId.bedrooms}</ListItem>
-                                                
-                                                <ListItem disableGutters>Bathrooms: {img.propertyId.bathrooms}</ListItem>
-                                                <ListItem disableGutters>Furnishing: {img.propertyId.furnishingStatus}</ListItem>
-                                                <ListItem disableGutters>Amenities: {img.propertyId.Amenities}</ListItem>
-                                                <ListItem disableGutters>Built in: {img.propertyId.yearBuilt}</ListItem>
-                                                
-                                            </List>
-                                            <CardMedia
+                                        <Grid container spacing={1}>
+                                            <Grid sx={{ display: 'flex', columnGap: 60 }}>
+                                                <List dense>
+                                                    <ListItem disableGutters>Address: {img.propertyId.address}</ListItem>
+                                                    <ListItem disableGutters>Pincode: {img.propertyId.pincode}</ListItem>
+                                                    <ListItem disableGutters>Price: ₹{img.propertyId.basePrice}</ListItem>
+                                                    <ListItem disableGutters>Size: {img.propertyId.size} Sq Ft</ListItem>
+                                                    <ListItem disableGutters>Bedrooms: {img.propertyId.bedrooms}</ListItem>
+                                                    <ListItem disableGutters>Bathrooms: {img.propertyId.bathrooms}</ListItem>
+                                                    <ListItem disableGutters>Furnishing: {img.propertyId.furnishingStatus}</ListItem>
+                                                    <ListItem disableGutters>Amenities: {img.propertyId.Amenities}</ListItem>
+                                                    <ListItem disableGutters>Built in: {img.propertyId.yearBuilt}</ListItem>
+                                                </List>
+                                                <CardMedia
                                                     component="img"
                                                     sx={{ width: 500, height: 250, objectFit: 'cover', borderRadius: 2 }}
                                                     image={`http://localhost:3000/${img.imgUrl[0]}`}
                                                     alt="Property"
                                                 />
+                                            </Grid>
                                         </Grid>
-                                    </Grid>
 
-                                    <Divider sx={{ my: 1 }} />
+                                        <Divider sx={{ my: 1 }} />
 
-                                    <Typography variant="body2" color="text.secondary">
-                                        {img.propertyId.description}
-                                    </Typography>
-                                </CardContent>
-                            </Box>
-                        </Card>
-                    </Grid>
-                ))}
+                                        <Typography variant="body2" color="text.secondary">
+                                            {img.propertyId.description}
+                                        </Typography>
+                                    </CardContent>
+                                </Box>
+                            </Card>
+                        </Grid>
+                    ))
+                ) : (
+                    <Typography variant="body1" color="textSecondary" sx={{ mt: 2 }}>
+                        No Property found.
+                    </Typography>
+                )}
+
             </Grid>
         </Box>
     );

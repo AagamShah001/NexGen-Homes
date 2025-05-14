@@ -10,10 +10,9 @@ export const WishButton = ({ propertyId, imgId }) => {
   const role = localStorage.getItem('role');
   const [isWishlisted, setIsWishlisted] = useState(false);
   const [check, setCheck] = useState(true);
-
   useEffect(()=>{
     if(role==="User" || role==="Owner"){
-      setCheck(true)
+      setCheck(false)
     }
   },[role])
 
@@ -34,15 +33,17 @@ export const WishButton = ({ propertyId, imgId }) => {
     fetchWishlist();
   }, [userId, propertyId]);
 
+
   const handleWishlistToggle = async () => {
 
     try {
       if (isWishlisted) {
         const delres = await axios.delete(`/wishlist/deletewishlist/${propertyId}`, {
           params: { userId }
-        });        setIsWishlisted(false);
+        });        
+        setIsWishlisted(false);
       } else {
-        const addres = await axios.post('/wishlist/addwishlist', { userId, propertyId, imgId });
+        const addres = await axios.post('/wishlist/addwishlist',{ userId, propertyId, imgId });
         setIsWishlisted(true);
 
         const notifyres = await axios.post('/createnotify',{
@@ -59,7 +60,7 @@ export const WishButton = ({ propertyId, imgId }) => {
   return (
     <>
 
-    {check ? (
+    {check?(
       <Tooltip placement="top" title="Login to use WishList feature" 
       slotProps={{
         tooltip: {
@@ -78,7 +79,7 @@ export const WishButton = ({ propertyId, imgId }) => {
           </IconButton>
         </span>
       </Tooltip>
-    ) : (
+    ):(
     <IconButton onClick={handleWishlistToggle} color="error">
       {isWishlisted ? <FavoriteIcon /> : <FavoriteBorderIcon />}
     </IconButton>

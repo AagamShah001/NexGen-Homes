@@ -32,11 +32,11 @@ export const AdminSidebar = ({ collapsed, toggleSidebar }) => {
   };
 
   const menuItems = [
-    { icon: <DashboardIcon />, label: 'Dashboard', path: '/adminpanel' },
-    { icon: <AccountBoxIcon />, label: 'Profile', path: '/profile' },
-    { icon: <SupportIcon />, label: 'Support', path: '/support' },
-    { icon: <SettingsIcon />, label: 'Settings', path: '/settings' },
-    { icon: <HomeIcon />, label: 'Home', path: '/' },
+    { icon: <DashboardIcon />, label: 'Dashboard', path: '#' },
+    { icon: <AccountBoxIcon />, label: 'Profile', path: '#' },
+    { icon: <SupportIcon />, label: 'Support', path: '#' },
+    { icon: <SettingsIcon />, label: 'Settings', path: '#' },
+    { icon: <HomeIcon />, label: 'Home', path: '#' },
   ];
 
   const isActive = (path) => location.pathname === path;

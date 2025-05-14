@@ -53,7 +53,6 @@ export const Signin = () => {
   const validator = {
     email: {
       required: "Email is required",
-      minLength: { value: 5, message: "Min 5 characters" },
       pattern: {
         value: /([a-zA-Z0-9_.-]+@[a-zA-Z-]+\.[a-zA-Z]+)|(^[5-9][\d]?[0-9]{8}\b)/,
         message: "Invalid email or phone number"
@@ -66,7 +65,7 @@ export const Signin = () => {
   }
 
   return (
-    <Box minHeight="100vh" display="flex" justifyContent="center" alignItems="center" bgcolor="#f7f7f7" px={2}>
+    <Box minHeight="100vh" display="flex" justifyContent="center" alignItems="center" px={2}>
       <Paper elevation={4} sx={{ p: 4, width: '100%', maxWidth: 400, borderRadius: 5 }}>
         <form onSubmit={handleSubmit(submit)}>
           <Stack spacing={3}>
@@ -75,7 +74,7 @@ export const Signin = () => {
             </Typography>
 
             <TextField
-              label="Email or Phone"
+              label="Email"
               fullWidth
               variant="outlined"
               {...register("email", validator.email)}

@@ -28,7 +28,7 @@ export const Forgot = () => {
   }
 
   return (
-    <Box minHeight="100vh" display="flex" justifyContent="center" alignItems="center" bgcolor="#f7f7f7" px={2}>
+    <Box minHeight="100vh" display="flex" justifyContent="center" alignItems="center" px={2}>
       <Paper elevation={3} sx={{ p: 4, width: '100%', maxWidth: 400, borderRadius: 5 }}>
         <form onSubmit={handleSubmit(submit)}>
           <Stack spacing={3}>

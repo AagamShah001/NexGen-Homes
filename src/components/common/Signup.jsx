@@ -23,10 +23,10 @@ import {
 
 
 export const Signup = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm()
-    const [selectedRole, setSelectedRole] = useState('')
-    const navigate = useNavigate()
-    const [snack, setSnack] = useState({ open: false, message: '', severity: 'success' })
+    const { register, handleSubmit, formState: { errors } } = useForm();
+    const [selectedRole, setSelectedRole] = useState('');
+    const navigate = useNavigate();
+    const [snack, setSnack] = useState({ open: false, message: '', severity: 'success' });
 
     const showSnack = (message, severity = 'success') => {
         setSnack({ open: true, message, severity })
@@ -65,7 +65,6 @@ export const Signup = () => {
     const validator = {
         user: {
             required: { value: true, message: "Field is required" },
-            minLength: { value: 5, message: "Min length is 8 characters" },
             pattern: {
                 value: /([a-zA-Z0-9_.-]+@[a-zA-Z-]+\.[a-zA-Z]+)|(^[5-9][\d]?[0-9]{8}\b)/,
                 message: "Invalid email or phone number"
@@ -84,7 +83,7 @@ export const Signup = () => {
     }
 
     return (
-        <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh" bgcolor="#f5f5f5" p={2}>
+        <Box mb={5} display="flex" justifyContent="center" alignItems="center" minHeight="100vh" p={2}>
             <Paper elevation={3} sx={{ p: 4, width: '100%', maxWidth: 450, borderRadius: 5 }}>
                 <Typography variant="h5" align="center" mb={3}>Create an Account</Typography>
 
@@ -127,17 +126,17 @@ export const Signup = () => {
       Owner
     </ToggleButton>
 
-    <ToggleButton value="67e216d9b222ea4185215c19">
+    {/* <ToggleButton value="67e216d9b222ea4185215c19">
       <BusinessCenterIcon sx={{ mr: 1 }} />
       Broker
-    </ToggleButton>
+    </ToggleButton> */}
   </ToggleButtonGroup>
 </Box>
 
                 <form onSubmit={handleSubmit(submit)}>
                     <Stack spacing={2}>
                         <TextField
-                            label="Email or Phone"
+                            label="Email"
                             variant="outlined"
                             fullWidth
                             {...register('email', validator.user)}

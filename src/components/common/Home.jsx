@@ -32,6 +32,7 @@ export const Home = () => {
     const res = await axios.get("/review/rate");
     setRate(res.data.data)
   }
+  console.log(Imgs)
 
   return (
 

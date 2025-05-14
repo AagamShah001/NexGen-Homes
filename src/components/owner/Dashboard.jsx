@@ -6,12 +6,14 @@ import { ViewProperty } from './ViewProperty';
 import { AddProperty } from "./AddProperty";
 import { ClickProperty } from "./ClickProperty";
 import { useState } from "react";
+import { Reviews } from "./Reviews";
 
 
 
 export const Dashboard = () => {
 
     const [activeSection, setActiveSection] = useState("view");
+
 
 
     return (
@@ -27,7 +29,7 @@ export const Dashboard = () => {
                             <button className='dbody-card-nav-bt' onClick={() => setActiveSection("add")}>Add Property</button>
                             <button className='dbody-card-nav-bt' onClick={() => setActiveSection("view")}>View Property</button>
                             <button className='dbody-card-nav-bt' onClick={() => setActiveSection("edit")}>Edit Property</button>
-                            <button className='dbody-card-nav-bt' onClick={() => setActiveSection("reviews")}>Reviews</button>
+                            <button className='dbody-card-nav-bt' onClick={() => setActiveSection("reviews")}>Property reviews</button>
                         </div>
 
                     </div>
@@ -38,8 +40,9 @@ export const Dashboard = () => {
                             {activeSection === "view" && <ViewProperty />}
                             {activeSection === "edit" && <ClickProperty />}
                             {activeSection === "reviews" && (
-                                <Typography variant="body1">Reviews section coming soon.</Typography>
+                                <Reviews />
                             )}
+                            
 
                         </div>
                     </div>
@@ -78,7 +81,7 @@ export const Dashboard = () => {
 
                         <Card sx={{ p: 2, height: 300, width: 345 }}>
                             <img
-                                style={{ width: 345 }}
+                                style={{ width: '100%', height: 'auto' }}
                                 src="src\assets\img\blog-house.webp"
                             />
                             <CardContent>
@@ -95,7 +98,7 @@ export const Dashboard = () => {
 
                         <Card sx={{ p: 2, height: 300, width: 345 }}>
                             <img
-                                style={{ width: 345 }}
+                                 style={{ width: '100%', height: 'auto' }}
                                 src="src\assets\img\help.webp"
                             />
                             <CardContent>
@@ -112,12 +115,12 @@ export const Dashboard = () => {
 
                         <Card sx={{ p: 2, height: 300, width: 345 }}>
                             <img
-                                style={{ width: '100%', height: 'auto' }}
+                                 style={{ width: '100%', height: '195px' }}
                                 src="src\assets\img\price.webp"
                             />
                             <CardContent>
-                                <Typography gutterBottom variant="h6" component="div">
-                                    Writing an effective listing description
+                                <Typography sx={{width: 400}} gutterBottom variant="h6" component="div">
+                                Writing an effective listing description
                                 </Typography>
 
                             </CardContent>

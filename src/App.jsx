@@ -16,6 +16,7 @@ import { Wishlist } from './components/user/Wishlist'
 import { AdminLogin } from './components/admin/adminlogin'
 import { HelpCenter } from './components/common/Support/HelpCenter'
 import { Loading } from './components/layout/Loading'
+import { Reviews } from '@mui/icons-material'
 
 
 
@@ -44,6 +45,10 @@ function App() {
         <Route path="/reset" element={<Forgot />}></Route>
         <Route path="/signup" element={<Signup />}></Route>
         <Route path="/*" element={<Error />}></Route>
+        
+        <Route path="/wishlist" element={<Wishlist />}></Route>
+        <Route path="/profile" element={<Profile />}></Route>
+        <Route path="/review" element={<Reviews />}></Route>
 
         <Route path="/helpcenter" element={<HelpCenter />}></Route>
         <Route path="/admin" element={<AdminLogin />}></Route>
@@ -54,13 +59,6 @@ function App() {
 
         <Route element={<Loading  allowedRoles={["Owner"]} />}>
           <Route path="/dashboard" element={<Dashboard />}></Route>
-          <Route path="/profile" element={<Profile />}></Route>
-          <Route path="/wishlist" element={<Wishlist />}></Route>
-        </Route>
-
-        <Route element={<Loading  allowedRoles={["User"]} />}>
-          <Route path="/profile" element={<Profile />}></Route>
-          <Route path="/wishlist" element={<Wishlist />}></Route>
         </Route>
 
       </Routes>

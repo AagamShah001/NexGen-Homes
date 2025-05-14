@@ -40,8 +40,10 @@ export const Notifications = () => {
 
   const unreadCount = notifications.filter((n) => !n.isRead).length;
 
-  const handleToggle = () => {
+  const handleToggle = async () => {
     setOpen((prev) => !prev);
+    await markAllAsRead(); 
+    fetchNotifications();  
   };
 
   const markAllAsRead = async () => {
@@ -67,7 +69,7 @@ export const Notifications = () => {
   return (
     <ClickAwayListener onClickAway={() => setOpen(false)}>
       <div style={{ position: 'relative' }}>
-        <IconButton onClick={() => { handleToggle(); markAllAsRead();fetchNotifications(); }} color="inherit">
+        <IconButton onClick={handleToggle} color="inherit">
           <Badge badgeContent={unreadCount} color="error">
             <NotificationsIcon />
           </Badge>

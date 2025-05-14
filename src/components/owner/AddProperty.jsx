@@ -93,7 +93,6 @@ export const AddProperty = () => {
   const getAllSubCategory = async () => {
     try {
       const res = await axios.get("/subcategory/getallSubCategory");
-      console.log(res.data.data);
       setSubcategories(res.data.data);
     } catch (error) {
       console.error("Error fetching subcategories:", error);
@@ -170,7 +169,6 @@ export const AddProperty = () => {
     }
   };
 
-  console.log(subcategories)
 
   return (
     <Box sx={{ p: 4, maxWidth: 1000, mx: 'auto', height: 'auto' }}>
